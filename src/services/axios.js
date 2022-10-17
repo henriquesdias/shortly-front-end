@@ -12,5 +12,8 @@ function getRanking() {
 function getMyUrls(config) {
   return axios.get(`http://localhost:4000/users/me`, config);
 }
+function postUrl(body, config) {
+  return axios.post(`http://localhost:4000/urls/shorten`, config, body);
+}
 
-export { signIn, signUp, getRanking, getMyUrls };
+export { signIn, signUp, getRanking, getMyUrls, postUrl };

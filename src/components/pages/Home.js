@@ -5,6 +5,7 @@ import UserContext from "../../context/user";
 import { getMyUrls } from "../../services/axios";
 import Url from "../Url";
 import UrlsStyle from "../../styles/Urls";
+import PostUrl from "../Post-url";
 
 import { useContext, useEffect, useState } from "react";
 
@@ -18,7 +19,7 @@ export default function Home() {
       },
     })
       .then((answer) => {
-        setUrls(answer.data.shortenedUrls);
+        setUrls(answer.data.shortenedUrls.reverse());
       })
       .catch((answer) => {
         console.log(answer);
@@ -29,6 +30,7 @@ export default function Home() {
       <Header></Header>
       <Title></Title>
       <UrlsStyle>
+        <PostUrl></PostUrl>
         <ul>
           {urls.map((e, index) => (
             <Url
@@ -42,40 +44,5 @@ export default function Home() {
         </ul>
       </UrlsStyle>
     </PageContainerStyle>
-  );
-}
-
-function PostUrl() {
-  const [form, setForm] = useState({
-    url: "",
-  });
-  const [disabled, setDisabled] = useState(false);
-  function submitData(event) {
-    event.preventDefault();
-    setDisabled(true);
-  }
-  function handleForm(e) {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  }
-  return (
-    <div>
-      <form onSubmit={submitData}>
-        <input
-          type="text"
-          placeholder="Links que cabem no bolso"
-          name="url"
-          value={form.url}
-          onChange={handleForm}
-          readOnly={disabled}
-          required
-        />
-        <button type="submit" disabled={disabled}>
-          Encurtar link
-        </button>
-      </form>
-    </div>
   );
 }

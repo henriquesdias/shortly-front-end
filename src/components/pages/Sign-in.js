@@ -57,6 +57,7 @@ export default function SignIn() {
       })
       .catch((answer) => {
         setDisabled(false);
+        alert("Dados inválidos/usuário não existe");
         console.log(answer);
       });
   }

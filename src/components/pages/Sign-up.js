@@ -70,6 +70,7 @@ export default function SignUp() {
       })
       .catch((answer) => {
         setDisabled(false);
+        alert("Dados inválidos/email já em uso");
         console.log(answer);
       });
   }
