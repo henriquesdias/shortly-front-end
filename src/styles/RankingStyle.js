@@ -20,6 +20,7 @@ const RankingStyle = styled.div`
     margin-top: 35px;
     height: 241px;
     padding: 19px 0 30px 40px;
+    overflow: auto;
     ul {
       display: flex;
       flex-direction: column;

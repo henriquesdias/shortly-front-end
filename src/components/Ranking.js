@@ -1,6 +1,20 @@
 import RankingStyle from "../styles/RankingStyle";
 import trophy from "../styles/ranking.png";
+import { getRanking } from "../services/axios";
+
+import { useState, useEffect } from "react";
+
 export default function Ranking() {
+  const [ranking, setRanking] = useState([]);
+  useEffect(() => {
+    getRanking()
+      .then((answer) => {
+        setRanking(answer.data);
+      })
+      .catch((answer) => {
+        console.log(answer);
+      });
+  }, []);
   return (
     <RankingStyle>
       <div>
@@ -9,31 +23,13 @@ export default function Ranking() {
       </div>
       <div>
         <ul>
-          <li>
-            <span>1.</span>
-            <span>Fulaninha</span> - <span>32 links</span> -
-            <span>1.703.584</span>
-          </li>
-          <li>
-            <span>1.</span>
-            <span>Fulaninha</span> - <span>32 links</span> -
-            <span>1.703.584</span>
-          </li>
-          <li>
-            <span>1.</span>
-            <span>Fulaninha</span> - <span>32 links</span> -
-            <span>1.703.584</span>
-          </li>
-          <li>
-            <span>1.</span>
-            <span>Fulaninha</span> - <span>32 links</span> -
-            <span>1.703.584</span>
-          </li>
-          <li>
-            <span>1.</span>
-            <span>Fulaninha</span> - <span>32 links</span> -
-            <span>1.703.584</span>
-          </li>
+          {ranking.map((e, index) => (
+            <li key={index}>
+              <span>{index + 1}.</span>
+              <span>{e.name}</span> - <span>{e.linksCount} links</span> -
+              <span>{e.visitCount} visualizações</span>
+            </li>
+          ))}
         </ul>
       </div>
     </RankingStyle>
