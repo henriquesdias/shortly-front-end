@@ -7,16 +7,30 @@ import HeaderStyle from "../styles/Header";
 
 function HeaderWhenUserIsLogged() {
   const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
   return (
     <div>
       <span>Seja bem vindo(a), Pessoa!</span>
       <div>
-        <span>Home</span>
-        <span>Ranking</span>
+        <span
+          onClick={() => {
+            navigate("/home");
+          }}
+        >
+          Home
+        </span>
+        <span
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Ranking
+        </span>
         <span
           onClick={() => {
             localStorage.removeItem("user");
             setUser(null);
+            navigate("/");
           }}
         >
           Sair

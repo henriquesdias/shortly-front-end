@@ -5,6 +5,7 @@ import ResetStyle from "../styles/Reset";
 import SignUp from "./pages/Sign-up";
 import SignIn from "./pages/Sign-in";
 import UserContext from "../context/user";
+import Home from "./pages/Home";
 
 import { useState, useContext } from "react";
 
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/" element={<PrincipalPage />}></Route>
           <Route path="/sign-up" element={<SignUp />}></Route>
           <Route path="/sign-in" element={<SignIn />}></Route>
+          <Route path="/home" element={<Home />}></Route>
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>

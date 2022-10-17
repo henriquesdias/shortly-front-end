@@ -46,10 +46,13 @@ export default function SignIn() {
     event.preventDefault();
     setDisabled(true);
     signIn(form)
-      .then(() => {
+      .then((answer) => {
         setDisabled(false);
-        setUser(form);
-        localStorage.setItem("user", JSON.stringify(form));
+        setUser({ ...form, token: answer.data.token });
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ ...form, token: answer.data.token })
+        );
         navigate("/");
       })
       .catch((answer) => {

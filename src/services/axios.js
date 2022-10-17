@@ -9,5 +9,8 @@ function signUp(body) {
 function getRanking() {
   return axios.get(`http://localhost:4000/ranking`);
 }
+function getMyUrls(config) {
+  return axios.get(`http://localhost:4000/users/me`, config);
+}
 
-export { signIn, signUp, getRanking };
+export { signIn, signUp, getRanking, getMyUrls };
