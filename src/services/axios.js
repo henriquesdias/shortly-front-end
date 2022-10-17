@@ -4,7 +4,7 @@ function signIn(body) {
   return axios.post(`${process.env.REACT_APP_API_BASE_URL}/signin`);
 }
 function signUp(body) {
-  return axios.post(`${process.env.REACT_APP_API_BASE_URL}/signup`);
+  return axios.post(`http://localhost:4000/signup`, body);
 }
 function getRanking() {
   return axios.get(`http://localhost:4000/ranking`);
